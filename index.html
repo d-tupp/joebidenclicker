@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
     height: 100vh;
     padding: 20px;
@@ -49,8 +49,8 @@
     text-align: center;
   }
   #biden {
-    width: 220px;
-    height: 320px;
+    width: 320px;
+    height: 460px;
     background: url('https://pngimg.com/uploads/biden/biden_PNG22.png') center/contain no-repeat;
     position: relative;
     transform-origin: top center;
@@ -66,35 +66,35 @@
   }
   #cloud {
     position: absolute;
-    width: 180px;
-    height: 90px;
+    width: 240px;
+    height: 120px;
     background: radial-gradient(circle at 30% 40%, #8B4513 0%, #3C2F2F 40%, transparent 70%);
     border-radius: 999px;
     opacity: 0;
     pointer-events: none;
     filter: blur(4px);
-    bottom: 40px;
-    left: 20px;
+    bottom: 60px;
+    left: 40px;
   }
   .stink-line {
     position: absolute;
-    width: 2px;
-    height: 60px;
+    width: 3px;
+    height: 80px;
     background: linear-gradient(transparent, #8B4513, #3C2F2F);
     opacity: 0;
     animation: rise 1.8s infinite;
   }
   @keyframes rise {
     0%   { transform: translateY(0) scale(1); opacity: 0.9; }
-    100% { transform: translateY(-180px) scale(0.3); opacity: 0; }
+    100% { transform: translateY(-240px) scale(0.3); opacity: 0; }
   }
   #stinkbar {
-    width: 500px;
-    height: 30px;
+    width: 600px;
+    height: 35px;
     background: rgba(0,0,0,0.7);
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
-    margin: 30px 0;
+    margin: 40px 0;
     border: 3px solid #ffcc00;
   }
   #stinkfill {
@@ -104,12 +104,12 @@
     transition: width 0.3s ease;
   }
   #bigfan {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: bold;
-    padding: 40px 80px;
-    margin: 40px;
+    padding: 50px 100px;
+    margin: 30px;
     border: 6px solid #000;
-    border-radius: 50px;
+    border-radius: 60px;
     background: linear-gradient(145deg, #00c, #009);
     color: white;
     cursor: pointer;
@@ -119,11 +119,24 @@
   #bigfan:hover { transform: scale(1.08); background: linear-gradient(145deg, #00f, #00c); box-shadow: 0 15px 40px rgba(0,0,255,0.4); }
   #bigfan:active { transform: scale(0.98); }
   #bigfan:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+  #reward-ad-btn {
+    font-size: 1.6rem;
+    padding: 20px 60px;
+    margin: 20px;
+    border: 4px solid #ffcc00;
+    border-radius: 40px;
+    background: linear-gradient(145deg, #ff4500, #cc3700);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #reward-ad-btn:hover { transform: scale(1.05); background: linear-gradient(145deg, #ff6500, #ff4500); }
+  #reward-ad-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   #info {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     opacity: 0.9;
     text-align: center;
-    max-width: 500px;
+    max-width: 600px;
     margin-top: 20px;
   }
   #reset {
@@ -143,7 +156,7 @@
     position: absolute;
     right: 20px;
     top: 20px;
-    width: 320px;
+    width: 340px;
     height: calc(100vh - 40px);
     overflow-y: auto;
     background: rgba(0,0,0,0.6);
@@ -171,17 +184,17 @@
     cursor: default;
   }
   .building .emoji {
-    font-size: 4rem;
+    font-size: 4.5rem;
     float: right;
     margin-left: 15px;
   }
   .building .name {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 8px;
   }
   .building .owned, .building .prod, .building .cost {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     opacity: 0.85;
     margin: 4px 0;
   }
@@ -217,7 +230,8 @@
       <div id="stinkfill"></div>
     </div>
     <button id="bigfan">🌀<br>FAN<br>🌀</button>
-    <div id="info">Click FAN to earn <b>MONEY</b>! Buy buildings for passive money. Keep STINK below 100% or GAME OVER!</div>
+    <button id="reward-ad-btn">Watch Ad → 2× Money/sec (30s)</button>
+    <div id="info">Click FAN to earn <b>MONEY</b>! Buy buildings for passive income. Keep STINK below 100% or GAME OVER!</div>
     <button id="reset">💀 RESET PROGRESS 💀</button>
   </div>
 
@@ -231,11 +245,34 @@
   <source src="https://www.soundjay.com/human/fart-2.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Google Ad Placement API for rewarded ads (web/HTML5 games) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID" crossorigin="anonymous"></script>
 <script>
+  // Replace with your actual values from Google Ad Manager
+  const AD_CONFIG = {
+    // Example test/pre-production config from Google docs
+    placements: [
+      {
+        // Get this from your Ad Manager rewarded unit
+        adBreakLocation: 'rewarded-ad-placement',
+        type: 'rewarded',
+        // name: '2x Money Boost'
+      }
+    ]
+  };
+
+  // Placeholder - load the Ad Placement API script dynamically if needed
+  // In production, include your key via ad client
+</script>
+
+<script>
+// ==================== GAME LOGIC ====================
+
 const TICK_MS = 200;
 const SAVE_INTERVAL = 10000;
+const REWARD_DURATION = 30; // seconds for 2x boost
 
-const level_thresholds = [0, 20, 200, 2000, 20000, 200000, 2000000, 20000000, 1e10];
+const level_thresholds = [0, 20, 200, 2000, 20000, 200000, 2000000, 20000000, 200000000, 2000000000, 1e10];
 
 let money = 0;
 let total_money = 0;
@@ -246,15 +283,19 @@ let passive_mult = 1;
 let buildup_per_sec = 1.0;
 let gameOver = false;
 let lastFartTime = 0;
+let rewardEndTime = 0; // timestamp when 2x boost ends
 
 const buildings = [
-  {id: 'intern', name: 'Intern Fanners', emoji: '👤', baseCost: 15, cps: 0.1, count: 0, reqLevel: 0},
-  {id: 'boxfan', name: 'Box Fans', emoji: '🌀', baseCost: 100, cps: 1, count: 0, reqLevel: 1},
-  {id: 'purifier', name: 'HEPA Purifiers', emoji: '🧹', baseCost: 1100, cps: 8, count: 0, reqLevel: 2},
-  {id: 'hvac', name: 'HVAC Units', emoji: '🔧', baseCost: 12000, cps: 47, count: 0, reqLevel: 3},
-  {id: 'ozone', name: 'Ozone Generators', emoji: '⚡', baseCost: 130000, cps: 260, count: 0, reqLevel: 4},
-  {id: 'weather', name: 'Weather Service', emoji: '🌤️', baseCost: 1400000, cps: 1400, count: 0, reqLevel: 5},
-  {id: 'nasa', name: 'NASA Scrubbers', emoji: '🚀', baseCost: 20000000, cps: 7800, count: 0, reqLevel: 6}
+  {id: 'intern',     name: 'Intern Fanners',     emoji: '👤', baseCost: 15,      cps: 0.1,   count: 0, reqLevel: 0},
+  {id: 'boxfan',     name: 'Box Fans',           emoji: '🌀', baseCost: 100,     cps: 1,     count: 0, reqLevel: 1},
+  {id: 'purifier',   name: 'HEPA Purifiers',     emoji: '🧹', baseCost: 1100,    cps: 8,     count: 0, reqLevel: 2},
+  {id: 'hvac',       name: 'HVAC Units',         emoji: '🔧', baseCost: 12000,   cps: 47,    count: 0, reqLevel: 3},
+  {id: 'ozone',      name: 'Ozone Generators',   emoji: '⚡', baseCost: 130000,  cps: 260,   count: 0, reqLevel: 4},
+  {id: 'weather',    name: 'Weather Service',    emoji: '🌤️', baseCost: 1400000, cps: 1400,  count: 0, reqLevel: 5},
+  {id: 'nasa',       name: 'NASA Scrubbers',     emoji: '🚀', baseCost: 20000000,cps: 7800,  count: 0, reqLevel: 6},
+  {id: 'wind',       name: 'Giant Wind Turbines',emoji: '🌬️', baseCost: 150000000,cps: 45000,count: 0, reqLevel: 7},
+  {id: 'chem',       name: 'Chemical Scrubbers', emoji: '🧪', baseCost: 1.2e9,   cps: 300000,count: 0, reqLevel: 8},
+  {id: 'quantum',    name: 'Quantum Air Filters',emoji: '⚛️', baseCost: 1e10,    cps: 2500000,count:0, reqLevel: 9}
 ];
 
 const els = {
@@ -264,6 +305,7 @@ const els = {
   buildup: document.getElementById('buildup'),
   stinkfill: document.getElementById('stinkfill'),
   bigfan: document.getElementById('bigfan'),
+  rewardBtn: document.getElementById('reward-ad-btn'),
   reset: document.getElementById('reset'),
   biden: document.getElementById('biden'),
   cloud: document.getElementById('cloud'),
@@ -275,14 +317,14 @@ const fart2 = document.getElementById('fart2');
 
 function format(num, decimals = 1) {
   if (num === 0) return '0';
-  if (num < 1000) return num.toFixed(decimals < 1 ? 0 : decimals);
-  const units = ['K', 'M', 'B', 'T'];
+  if (num < 1000) return num.toLocaleString('en-US', {maximumFractionDigits: decimals});
+  const units = ['', 'K', 'M', 'B', 'T', 'Q'];
   let u = 0;
   while (num >= 1000 && u < units.length - 1) {
     num /= 1000;
     u++;
   }
-  return num.toFixed(decimals) + units[u];
+  return num.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: decimals}) + units[u];
 }
 
 function computeLevel() {
@@ -309,10 +351,10 @@ function playFart(type = 1) {
 function createStinkLine() {
   const line = document.createElement('div');
   line.className = 'stink-line';
-  line.style.left = (Math.random() * 140 + 20) + 'px';
+  line.style.left = (Math.random() * 200 + 40) + 'px';
   line.style.animationDuration = (1.2 + Math.random() * 1.1) + 's';
   els.cloud.appendChild(line);
-  setTimeout(() => line.remove(), 2000);
+  setTimeout(() => line.remove(), 2200);
 }
 
 function updateDozeSpeed() {
@@ -323,8 +365,8 @@ function updateDozeSpeed() {
 function updateCloud() {
   const op = Math.min(stink / 80, 1);
   els.cloud.style.opacity = op;
-  els.cloud.style.transform = `scale(${1 + stink / 100}) translateY(-${stink}px)`;
-  if (Math.random() < 0.3) createStinkLine();
+  els.cloud.style.transform = `scale(${1 + stink / 100}) translateY(-${stink * 1.2}px)`;
+  if (Math.random() < 0.35) createStinkLine();
 }
 
 function updateShop() {
@@ -360,13 +402,20 @@ function updateShop() {
 
 function updateDisplays() {
   els.money.textContent = format(money);
-  els.mps.textContent = format(prod_per_sec * passive_mult, prod_per_sec * passive_mult > 10 ? 0 : 1);
+  const effectiveMps = prod_per_sec * passive_mult * (Date.now() < rewardEndTime ? 2 : 1);
+  els.mps.textContent = format(effectiveMps, effectiveMps > 10 ? 0 : 1);
   els.level.textContent = computeLevel();
   els.buildup.textContent = format(buildup_per_sec, 2);
-  els.stinkfill.style.width = Math.min(100, (stink / 100) * 100) + '%';
+  els.stinkfill.style.width = Math.min(100, stink) + '%';
   updateShop();
   updateCloud();
   updateDozeSpeed();
+
+  // Update reward button state
+  els.rewardBtn.disabled = gameOver || Date.now() < rewardEndTime;
+  els.rewardBtn.textContent = Date.now() < rewardEndTime 
+    ? `2× Boost Active (${Math.ceil((rewardEndTime - Date.now())/1000)}s left)`
+    : "Watch Ad → 2× Money/sec (30s)";
 }
 
 function buy(i) {
@@ -386,7 +435,11 @@ function buy(i) {
 function tick() {
   const delta = TICK_MS / 1000;
   if (gameOver) return;
-  const passive_delta = prod_per_sec * passive_mult * delta;
+
+  let mult = passive_mult;
+  if (Date.now() < rewardEndTime) mult *= 2;
+
+  const passive_delta = prod_per_sec * mult * delta;
   money += passive_delta;
   stink -= passive_delta;
   const level = computeLevel();
@@ -397,6 +450,7 @@ function tick() {
     gameOver = true;
     els.bigfan.disabled = true;
     els.bigfan.style.opacity = 0.5;
+    els.rewardBtn.disabled = true;
     els.reset.style.display = 'block';
     els.shop.style.opacity = 0.5;
     els.stinkfill.style.background = '#900';
@@ -437,6 +491,23 @@ els.bigfan.onclick = () => {
   updateDisplays();
 };
 
+els.rewardBtn.onclick = () => {
+  if (gameOver || Date.now() < rewardEndTime) return;
+
+  // Trigger rewarded ad via Google Ad Placement API
+  // In real use: call adBreak or equivalent from loaded SDK
+  // For demo: simulate reward after "watching"
+  console.log("Rewarded ad triggered - in production show real ad here");
+
+  // Simulate success (replace with actual on-reward callback)
+  setTimeout(() => {
+    rewardEndTime = Date.now() + REWARD_DURATION * 1000;
+    playFart(1);
+    alert("Ad watched! 2× Money/sec for 30 seconds!");
+    updateDisplays();
+  }, 2000); // fake delay
+};
+
 els.reset.onclick = () => {
   localStorage.removeItem('bidenStinkySave');
   location.reload();
@@ -451,7 +522,7 @@ function saveGame() {
     buildings: buildings.map(b => b.count),
     click_power,
     passive_mult,
-    version: 2
+    version: 3  // bump version
   };
   localStorage.setItem('bidenStinkySave', JSON.stringify(data));
 }
@@ -461,7 +532,7 @@ function loadGame() {
     const dataStr = localStorage.getItem('bidenStinkySave');
     if (!dataStr) return;
     const data = JSON.parse(dataStr);
-    if (data.version < 2) {
+    if (data.version < 3) {
       localStorage.removeItem('bidenStinkySave');
       return;
     }
@@ -470,7 +541,7 @@ function loadGame() {
     stink = data.stink || 0;
     click_power = data.click_power || 1;
     passive_mult = data.passive_mult || 1;
-    data.buildings.forEach((count, i) => { buildings[i].count = count; });
+    data.buildings.forEach((count, i) => { if (buildings[i]) buildings[i].count = count; });
     computeProd();
     if (stink > 100) gameOver = true;
   } catch (e) {
